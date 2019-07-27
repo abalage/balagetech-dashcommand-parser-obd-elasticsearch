@@ -1,0 +1,104 @@
+PUT _template/dashcommand-perl
+{
+  "index_patterns": ["dashcommand-*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "aux": {
+          "properties": {
+            "gps": {
+              "properties": {
+                "course": {
+                  "type": "integer"
+                },
+                "speed": {
+                  "type": "integer"
+                },
+                "altitude": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "calc": {
+          "properties": {
+            "acceleration m/s²": {
+              "type": "half_float"
+            },
+            "acceleration_g g": {
+              "type": "half_float"
+            },
+            "boost_pressure kpa | bar | kg-f/cm²": {
+              "type": "half_float"
+            },
+            "distance km": {
+              "type": "half_float"
+            },
+            "engine_power hp": {
+              "type": "half_float"
+            },
+            "engine_torque n·m | kg-f·m": {
+              "type": "half_float"
+            },
+            "fc": {
+              "properties": {
+                "ifc l/100km": {
+                  "type": "half_float"
+                },
+                "ifc_avg l/100km": {
+                  "type": "half_float"
+                }
+              }
+            },
+            "fuel_flow l/h": {
+              "type": "half_float"
+            },
+            "fuel_flow_avg l/h": {
+              "type": "half_float"
+            },
+            "map kpa": {
+              "type": "half_float"
+            }
+          }
+        },
+        "frame number": {
+          "type": "integer"
+        },
+        "geo": {
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            }
+          }
+        },
+        "sae": {
+          "properties": {
+            "ect °c": {
+              "type": "half_float"
+            },
+            "iat °c": {
+              "type": "half_float"
+            },
+            "maf g/s": {
+              "type": "half_float"
+            },
+            "rpm rpm": {
+              "type": "half_float"
+            },
+            "sparkadv °": {
+              "type": "half_float"
+            },
+            "vss km/h": {
+              "type": "half_float"
+            }
+          }
+        }
+      }
+    }
+}
